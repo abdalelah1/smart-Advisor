@@ -1,0 +1,158 @@
+.navbar-brand {
+  font-size: 24px;
+}
+
+#sidebar {
+  width:250px;
+  background-color: #14a5a377;
+  
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+   transform: translateX(0); /* Default position */
+    transition: transform 1s;
+    top: 0;
+    left: 0;
+    bottom: 0;
+     /* Add transition for smooth animation */
+}
+
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar li {
+  margin-bottom: 20px;
+}
+
+#sidebar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  padding: 10px 20px;
+  transition: color 0.3s; 
+
+}
+
+#sidebar a:hover {
+  color: #131212; 
+}
+
+#main-content {
+  flex: 1;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-top: 100px;
+  margin-left: 20px; /* Default margin when sidebar is open */
+  transition: margin-left 2s; 
+  width: 100%;
+}
+.navbar-nav .nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+.navbar-nav .nav-link:hover {
+  color: #ff5733;
+}
+.text-center{text-align: center;}
+
+.full-width-footer {
+  text-align: center;
+  background: linear-gradient(to right, #14a5a377, #000d2b);
+  padding: 1px;
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Ensure it's anchored to the left */
+  width: 100%; /* Make it full width */
+  z-index: 1;
+  color: #fff;
+}
+
+
+
+.user-info {
+  text-align: center; 
+  padding: 20px; 
+}
+.user-name {
+  margin-top: 0; 
+}
+.word1 {
+  color: #14a5a377; /* Color for the first word */
+}
+
+.word2 {
+  color: #000d2b; /* Color for the second word */
+}
+
+.word3 {
+    color: #14a5a377; /* Color for the third word */
+}
+
+.word4 {
+    color: #000d2b; 
+}
+/* Style the button */
+#sidebarToggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Position on the right side of the screen */
+    z-index: 999;
+    transition: 1s; /* Remove hover effect */
+}
+
+/* Style the button icon */
+#sidebarToggle i {
+    font-size: 24px;
+    transition: transform 1s;
+     /* Add transition for icon rotation */
+}
+
+/* Rotate the arrow icon 180 degrees when the sidebar is minimized */
+#sidebarToggle.custom-sidebar-hidden i#toggleIcon {
+    transform: rotate(90deg);
+    color: #ff5733;
+     /* Adjust icon color */
+    
+}
+
+#sidebar.custom-sidebar-hidden {
+  transform: translateX(-6.6cm);
+  transition: transform 1s;
+   /* Moves the sidebar off the screen */
+}
+
+
+#main-content.custom-sidebar-hidden {
+  margin-left: -5cm;
+  
+  width: 20cm; 
+  
+}
+#main-content.custom-sidebar-hidden .container {
+  
+  text-align: center;
+}
+.static-content {
+  position: fixed; 
+  top: 100px; 
+}
+

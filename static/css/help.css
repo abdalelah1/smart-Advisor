@@ -1,0 +1,133 @@
+/* Add your existing CSS rules here */
+
+/* Improve transitions and visuals for the elements in the help page */
+
+
+.main-image {
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.excel-description {
+    margin-bottom: 30px;
+}
+.button-space {
+    width: 20px; /* Adjust the width to increase/decrease the space */
+    display: inline-block;
+}
+
+.description-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.description-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.description-list li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.file-input {
+    position: relative;
+}
+
+.custom-file-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.submit-button {
+    /* Add shared styles for both buttons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Adjust icon styles within the buttons */
+.submit-button .fas {
+    margin-right: 5px; /* Add some space between icon and text */
+}
+
+/* Change the button style when hovered */
+.submit-button:hover {
+    background-color: #2980b9;
+}
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000d2b;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.file-label:hover {
+    background-color: #14a5a3;
+    transform: scale(1.05);
+}
+.description-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Text color */
+}
+
+.description-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.description-list li::before {
+    content: "\2022"; /* Custom bullet point using a Unicode character */
+    position: absolute;
+    left: 0;
+    color: #14a5a3; /* Bullet point color */
+    font-size: 18px;
+    line-height: 1.2;
+}
+/* Custom styling for form-select */
+.custom-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    background-image: url('path_to_arrow_icon'); /* Replace 'path_to_arrow_icon' with your arrow icon */
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 2.5rem; /* Adjust padding to accommodate the arrow icon */
+    border: 1px solid #ced4da; /* Add border styles */
+    border-radius: 0.25rem; /* Add border radius */
+    cursor: pointer;
+}
+
+/* Styling for when the dropdown is open */
+.custom-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+.custom-select {
+    width: 120px; /* Adjust the width as needed */
+    margin: 0 auto; /* This will horizontally center the element */
+}

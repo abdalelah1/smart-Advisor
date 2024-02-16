@@ -1,0 +1,297 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a nice background and font */
+body {
+    background-color: #f8f8f8;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #212112;
+    overflow-x: hidden;
+    transition: all 200ms linear;
+}
+
+/* Style the header and news ticker */
+header {
+    background: white; /* Gradient background */
+    padding: 20px 0;
+    box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
+    z-index: 100;
+    position: relative; /* For stacking elements */
+    display: flex; /* Align news ticker horizontally */
+    justify-content: center; /* Center the ticker horizontally */
+}
+
+.news-ticker {
+    color: #fff;
+    font-weight: 700;
+    animation: news-ticker-animation 10s linear infinite; /* News ticker animation */
+    font-size: 18px; /* Increase font size */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add letter spacing */
+    display: inline-block; /* Display inline with flex layout */
+    margin: 0 10px; /* Add spacing between ticker and content */
+}
+
+@keyframes news-ticker-animation {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.word {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 10px;
+    animation: news-ticker-animation 10s linear infinite;
+}
+.word1 {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 10px;
+    color: #14a5a3; /* Initial color for the first word */
+    transition: color 0.5s; /* Add a color transition effect */
+}
+
+.word2 {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 10px;
+    color: #000d2b; /* Initial color for the second word */
+    transition: color 0.5s; /* Add a color transition effect */
+}
+/* Style the main content */
+.content {
+    padding: 40px 0;
+}
+
+.main-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Increase shadow */
+    padding: 20px;
+    transition: all 0.4s ease-in-out; /* Slower transition */
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #212112;
+    margin-bottom: 20px; /* Add margin at the bottom */
+    text-transform: capitalize; /* Capitalize text */
+}
+
+/* Style buttons with transitions */
+button {
+    padding: 12px 24px; /* Larger buttons */
+    background-color: #000822; /* New button color */
+    color: #fff;
+    border: none;
+    border-radius: 30px; /* Round buttons */
+    cursor: pointer;
+    transition: background-color 0.4s, transform 0.4s; /* Slower transition */
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase text */
+    box-shadow: 0 4px 10px rgba(255, 87, 51, 0.4); /* Enhance button shadow */
+}
+
+button:hover {
+    background-color: #e64a28; /* Darker color on hover */
+    transform: scale(1.05); /* Slightly bigger on hover */
+}
+
+/* Add a subtle hover effect to links */
+a:hover {
+    color: #ff5733;
+    transition: color 0.4s;
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Change the background color and text color for the "Save University Info" button */
+.btn-primary {
+    background-color: #14a5a377; /* Replace with your desired color */
+    color: #000d2b; /* Replace with the text color you prefer */
+}
+
+/* Add hover styles for the "Save University Info" button */
+.btn-primary:hover {
+    background-color:#000d2b; /* Replace with the hover color */
+    color: 14a5a377rgb(1, 7, 58); /* Replace with the hover text color */
+}
+.btn-success{ background-color: #000d2b; /* Replace with your desired color */
+    color: white;}
+.btn-success:hover{   background-color:#14a5a377; /* Replace with the hover color */
+    color: rgb(1, 7, 58);}
+
+/* Add icons to buttons */
+button#saveUniversityInfo::before,
+button#addCourses::before,
+button#saveCourse::before {
+     /* FontAwesome save icon */
+    font-family: FontAwesome;
+    margin-right: 10px; /* More space between icon and text */
+    font-size: 20px; /* Larger icon */
+}
+
+/* Style the footer 
+footer {
+    text-align: center;
+    background: linear-gradient(to right, #14a5a377, #000d2b);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Additional styling for the footer 
+footer p {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+footer i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+*/
+
+/* ... (previous styles) ... */
+
+/* Style the course form */
+/* ... (previous styles) ... */
+
+/* Style the course form */
+/* ... (previous styles) ... */
+
+/* ... (previous styles) ... */
+/* Redesigned Course Form */
+/* Centered Course Form */
+#coursesForm {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center horizontally */
+    padding: 30px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    max-width: 500px; /* Limit the width of the form */
+    text-align: left; /* Align form contents to the left */
+    position: relative;
+}
+
+#coursesForm.active {
+    display: flex; /* Display the form as a flex container */
+    flex-direction: column; /* Stack contents vertically */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#coursesForm h2 {
+    font-size: 28px;
+    color: #14a5a377;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#coursesForm h2::before {
+    content: "\f02d";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 24px;
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    left: -35px;
+    color: #000d2b;
+}
+
+#CourseInfo label {
+    display: block;
+    margin: 15px 0;
+    font-weight: bold;
+    color: #212112;
+}
+
+#CourseInfo input[type="text"],
+#CourseInfo input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #14a5a377;
+    background-color: transparent;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#CourseInfo input[type="text"]:focus,
+#CourseInfo input[type="number"]:focus {
+    border-color: #14a5a377;
+    background-color: rgba(255, 87, 51, 0.1);
+}
+#courseLevel{background-color:#f4f4f4 ;}
+#CourseInfo input[type="checkbox"] {
+    display: none;
+}
+
+#CourseInfo label[for="requiredTrue"],
+#CourseInfo label[for="requiredFalse"] {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    
+}
+
+#CourseInfo label[for="requiredTrue"]::before,
+#CourseInfo label[for="requiredFalse"]::before {
+    content: "\f111";
+    font-family: 'Font Awesome 5 Free';
+    font-size: 16px;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    color: #000d2b;
+}
+
+#CourseInfo label[for="requiredTrue"]::before {
+    content: "\f111";
+    color: #14a5a377;
+}
+
+#CourseInfo button {
+    background-color: #000d2b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    
+}
+
+#CourseInfo button:hover {
+    background-color: #000d2b;
+    transform: scale(1.05);
+}
+
+  

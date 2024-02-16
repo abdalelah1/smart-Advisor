@@ -1,0 +1,85 @@
+/* Add your existing CSS rules here */
+
+/* Improve transitions and visuals for the elements in the help page */
+
+
+.main-image {
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.excel-description {
+    margin-bottom: 30px;
+}
+
+.description-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.description-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.description-list li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.file-input {
+    position: relative;
+}
+
+.custom-file-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000d2b;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.file-label:hover {
+    background-color: #14a5a3;
+    transform: scale(1.05);
+}
+.description-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Text color */
+}
+
+.description-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+
+.description-list li::before {
+    content: "\2022"; /* Custom bullet point using a Unicode character */
+    position: absolute;
+    left: 0;
+    color: #14a5a3; /* Bullet point color */
+    font-size: 18px;
+    line-height: 1.2;
+}

@@ -1,0 +1,108 @@
+{% extends 'home/home.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Upload Excel File</title>
+    <style>
+        #indicator {
+            color: blue; /* أو اللون الذي تريده للدائرة المؤشرة أثناء التشغيل */
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <img src="{% static 'images/screen major.png' %}"  class="main-image">
+        <div class="excel-description">
+            <p class="description-text">Please upload an Excel file containing the following information:</p>
+            <ul class="description-list">
+                <li>Identification Number</li>
+                <li>Course Code</li>
+                <li>Degree</li>
+                <li>Major</li>
+            </ul>
+
+
+            <div><p>*********************************************************</p> </div>
+            <form method="post" enctype="multipart/form-data" action="{% url 'help' %}">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mb-3">
+                            <label for="SemesterLevel" class="form-label">Semester Level:</label>
+                            <select class="form-select custom-select" id="SemesterLevel" name="SemesterLevel" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div><p>*********************************************************</p> </div>
+
+                {% if uploaded_success %}
+                <div class="upload-success" style="color: green;">
+                    <i class="fas fa-check-circle"></i> File uploaded successfully!
+                </div>
+            {% endif %}
+                <div class="file-input">
+                    <input type="file" accept=".xlsx, .xls" id="excelFile" name="excelFile" class="custom-file-input" required>
+                    <label for="excelFile" class="file-label">Upload Excel File</label>
+                </div>
+
+                <div><p>*********************************************************</p> </div>
+
+                <style>
+                    .button-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                
+                    .submit-button {
+                        margin: 0 10px; /* Adjust the margin value as needed for the space between buttons */
+                    }
+                </style>
+                
+                <div class="button-container">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <button type="submit" class="submit-button"><i class="fas fa-check-circle"></i> Submit</button>
+                    </form>
+                    <a id="runAlgorithmBtn" class="submit-button" onclick="runAlgorithm()">
+                        <i id="progressIndicator" class="fas fa-circle-notch fa-spin fa-lg" style="display:none;"></i> Run Algorithm
+                    </a>
+                </div>
+                
+                
+    </div>
+
+    <script>
+        function runAlgorithm() {
+            // عرض مؤشر التقدم
+            document.getElementById("progressIndicator").style.display = "inline-block";
+
+            // استدعاء العملية الطويلة باستخدام AJAX
+            fetch("{% url 'test' %}")
+                .then(response => response.json())
+                .then(data => {
+                    // إخفاء مؤشر التقدم عند الانتهاء
+                    document.getElementById("progressIndicator").style.display = "none";
+                    // يمكنك إجراء أي عمليات إضافية هنا بناءً على البيانات المسترجعة من الخادم
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // يمكنك إدارة الأخطاء هنا
+                });
+        }
+    </script>
+
+</body>
+</html>
+{% endblock content %}

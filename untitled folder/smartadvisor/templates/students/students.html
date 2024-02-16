@@ -1,0 +1,117 @@
+{% extends 'home/home.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #searchInput {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    {% if course %}
+        <h1>{{course}} , {{course.name}}</h1>
+        <div class="report-table-container">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Major</th>  
+                        <th>Com Hours</th>
+                        <th>Level</th>
+                        <th>GPA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ student.university_ID }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.major.name }}</td>
+                            <td>{{ student.Hours_count }}</td>
+                            <td>{{ student.level.level }}</td>
+                            <td>{{ student.GPA }}</td>
+                        </tr>
+                    {% endfor %}
+                    <!-- Add more rows for other data -->
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </div> 
+    </div>
+    {% else %}
+        <h1>Students</h1>
+        <input type="text" id="searchInput" placeholder="Search by name or ID">
+        <div class="report-table-container">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Major</th>
+                        <th>Level</th>
+                        <th>Com Hours</th>
+                        <th>GPA</th>
+                        <th>Level</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ student.university_ID }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.major.name }}</td>
+                            <td>{{ student.Hours_count }}</td>
+                            <td>{{ student.level.level }}</td>
+                            <td>{{ student.GPA }}</td>
+                        </tr>
+                    {% endfor %}
+                    <!-- Add more rows for other data -->
+                </tbody>
+            </table>
+            <br>
+        </div>
+        {%endif%}
+    </div>
+    </div>
+    <script>
+        console.log('from search')
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const rows = document.querySelectorAll('.report-table tbody tr');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                rows.forEach(function (row) {
+                    const nameColumn = row.querySelector('td:nth-child(3)'); // Assuming name is in the third column
+                    const idColumn = row.querySelector('td:nth-child(2)'); // Assuming ID is in the second column
+
+                    const name = nameColumn.textContent.toLowerCase();
+                    const id = idColumn.textContent.toLowerCase();
+
+                    if (name.includes(searchTerm) || id.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock content %}

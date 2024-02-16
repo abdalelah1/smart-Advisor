@@ -1,0 +1,115 @@
+{% extends 'home/home.html'%}
+{%load static%}
+{% block content%}
+<h1> college & department required courses </h1>
+
+
+<div class="report-table-container">
+    <table class="report-table">
+        <thead>
+            <tr><th>#</th>
+                <th>Code</th>
+                <th>name</th>
+                <th>credit</th>
+                <th>type</th>
+                <th>hours_condition</th>
+                <th>Level</th>
+                <th>prerequist</th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for course in courses_required %}
+            <tr><td>{{forloop.counter}}</td>
+                <td>{{course.code}}</td>
+                <td>{{course.name}}</td>
+                <td>{{course.credit}}</td>
+                <td>{{course.type.typeOfCourse}}</td>
+                <td>{{course.hours_condition}}</td>
+                <td>{{course.level.level}}</td>
+                <td>
+                    {% for pre_course in course.preRequst.all %}
+                        {{ pre_course.code }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            {%endfor%}
+            <!-- Add more rows for other data -->
+        </tbody>
+    </table>
+    <br>
+    <h1> College Not required</h1>
+    
+        <table class="report-table">
+            <thead>
+                <tr><th>#</th>
+                    <th>Code</th>
+                    <th>name</th>
+                    <th>credit</th>
+                    <th>type</th>
+                    <th>hours_condition</th>
+                    <th>prerequist</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for course in courses_not_required%}
+                <tr> <td>{{forloop.counter}}</td>
+                    <td>{{course.code}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.credit}}</td>
+                    <td>{{course.type.typeOfCourse}}</td>
+                    <td>{{course.hours_condition}}</td>
+                    <td>
+                        {% for pre_course in course.preRequst.all %}
+                            {{ pre_course.code }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {%endfor%}
+                <!-- Add more rows for other data -->
+            </tbody>
+        </table>
+    <br>
+    <h1> Elective</h1>
+
+        <table class="report-table">
+            <thead>
+                <tr><th>#</th>
+                    <th>Code</th>
+                    <th>name</th>
+                    <th>credit</th>
+                    <th>type</th>
+                    <th>hours_condition</th>
+                    <th>Major</th>
+                    <th>prerequist</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for course in elective%}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{course.code}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.credit}}</td>
+                    <td>{{course.type.typeOfCourse}}</td>
+                    <td>{{course.hours_condition}}</td>
+                    <td>
+                        {% for major in course.majors.all %}
+                            {{ major.name }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for pre_course in course.preRequst.all %}
+                            {{ pre_course.code }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {%endfor%}
+                <!-- Add more rows for other data -->
+            </tbody>
+        </table>
+
+{% endblock content%}

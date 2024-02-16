@@ -1,0 +1,161 @@
+{% extends 'home/home.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/student_details.css' %}">
+<h1>Student Details</h1>
+<p>University ID: {{ student.university_ID }}</p>
+<p>Name: {{ student.name }}</p>
+
+<h1>Same Level</h1>
+
+<div class="course-details">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Credit</th>
+                <th>count of credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in same_level%}
+            <tr>
+                <td>{{course.code}}</td>
+                <td>{{course.name}} </td>
+                <td>{{course.credit}}</td>
+            </tr>
+            {%endfor%}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>15</td>
+            </tr>
+        </tbody>
+
+        <table>
+            <thead>
+                <tr>
+                    <h1> قيد مرن</h1>
+                </tr>
+                <tr>
+
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Credit</th>
+                    <th>count of credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in less_level%}
+                <tr>
+                    <td>{{course.code}}</td>
+                    <td>{{course.name}} </td>
+                    <td>{{course.credit}}</td>
+                </tr>
+                {%endfor%}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Loop through course details to populate the table -->
+        {% for course_detail in course_details %}
+        <tr>
+            <td>{{ course_detail.code }}</td>
+            <td>{{ course_detail.name }}</td>
+            <td>{{ course_detail.credit }}</td>
+            <td>{{ course_detail.same_level }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="report">
+    <table>
+        <thead>
+            <tr>
+                <th>Remaining Courses</th>
+                <th>Name</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in remaining_courses_for_student %}
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.credit }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Conditional Courses</th>
+                <th>Name</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in conditional_courses %}
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.credit }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fail Courses</th>
+                <th>Name</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in fail_courses %}
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.credit }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Completed Courses</th>
+                <th>Name</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in completed_courses %}
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.credit }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Include any other course-related details as needed -->
+{% endblock %}

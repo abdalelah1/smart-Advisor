@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>elective</h1>
+    <table>
+        <th>code</th>
+        <th>gradute_St</th>
+        {% for code , student in elective.items %}
+        <tr>
+
+        <td>{{code}}</td>
+        <td>{{student}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    <h1>University Optional</h1>
+    <table>
+        <th>code</th>
+        <th>Students</th>
+        {% for code , student in university_map.items %}
+        <tr>
+
+        <td>{{code}}</td>
+        <td>{{student}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    <h1>College Optional</h1>
+    <table>
+        <th>code</th>
+        <th>Students</th>
+        {% for code , student in college_map.items %}
+        <tr>
+
+        <td>{{code}}</td>
+        <td>{{student}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

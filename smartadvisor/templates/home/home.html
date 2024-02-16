@@ -1,0 +1,41 @@
+{% extends 'index/index.html'%}
+{% block pages%}
+<div class="container mt-5">
+    <div class="row">
+        
+        <!-- Sidebar -->
+        <div class="col-md-3" id="sidebar" class="custom-sidebar">
+            
+            <!-- Your sidebar content -->
+            <div class="user-info">
+                
+            </div>
+            <div class="static-content">
+            <ul type="circle">
+                <ul>
+                    <h3 class="Admin">
+            
+                        <pre>{{ user.advisor }}</pre>
+
+                    </h3>
+                </ul>              
+                <!----<li><a href="{% url 'general'%}"><i class="fas fa-home"></i> General</a></li>-->
+                <li><a href="{% url 'students'%}"><i class="fas fa-user"></i> Student</a></li>
+                <li><a href="{% url 'courses'%}"><i class="fas fa-poll"></i> Result</a></li>
+                <li><a href="{% url 'major'%}"><i class="fas fa-graduation-cap"></i> Major</a></li>
+                 <li><a href="{% url 'allcourses'%}"><i class="fas fa-list-alt"></i> Courses</a></li> 
+                 <li><a href="{% url 'report'%}"><i class="fas fa-file-alt"></i> Report</a></li>
+                 <li><a href="{% url 'help'%}"><i class="fas fa-question-circle"></i> Help</a></li> 
+                <li><a href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+              </ul>
+            </div>
+        </div>
+        
+        <!-- Main Content Column -->
+        <div class="col-md-9" id="main-content">
+            {% block content%}
+            {% endblock content%}
+         
+        </div>
+
+            {% endblock pages%}  

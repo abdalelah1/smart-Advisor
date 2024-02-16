@@ -1,0 +1,60 @@
+{% extends 'home/home.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Section Name</th>
+                <th>College</th>
+                <th>Number of Hours in Section</th>
+                <th>Fewest Hours To be Graduated</th>
+                <th>Required Elective Hours</th>
+                <th>Advisor Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departments %}
+                <tr>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.college.name }}</td>
+                    <td>{{ department.full_courses_count }}</td>
+                    <td>{{ department.no_hourse_Tobe_graduated }}</td>
+                    <td>{{ department.no_required_Elecvtive }}</td>
+                    <td>{{ department.advisor }}</td>
+                </tr>
+                
+                {% for major in department.major_set.all %}
+                    {% if major.name != "تقانة المعلومات" %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Course Code</th>
+                                
+                                    <!-- Add more course-related columns as needed -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <pre>
+                                    
+                                <h1>{{ major.name }}</h1></pre>
+                                {% for course in major.course_set.all %}
+                                    <tr>
+                                        <td>{{ course.name }}</td>
+                                        <td>{{ course.code }}</td>
+                                        
+                                       
+                                        <!-- Add more course-related data here -->
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

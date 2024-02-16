@@ -1,0 +1,174 @@
+{% extends 'home/home.html'%}
+{% block content%}
+<h1>Courses Report</h1>
+
+<div class="level-container">
+    <h2 class="level-title">Required Courses</h2>
+    <div class="report-table-container">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Course Code</th>
+                    <th>Level</th>
+                    <th>Fail Count</th>
+                    <th>Conditional Count</th>
+                    <th>Graduated Count</th>
+                    <th>Same Level Count</th>
+                    <th>Pass PreRequist & Hours condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course, data in final_map.items %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.level.level }}</td>
+                    <td> <a href="{% url 'student_on_course' course 'fault'    %}">{{ data.fault|length }}</a></td>
+                    <td><a href="{% url 'student_on_course' course 'condition'    %}">{{ data.condition|length }} </a>
+                    </td>
+                    <td> <a href="{% url 'student_on_course' course 'graduate'    %}">{{ data.graduate|length }}</a>
+                    </td>
+                    <td> <a href="{% url 'student_on_course' course 'same_level'    %}">{{ data.same_level|length }}</a>
+                    </td>
+                    <td> <a href="{% url 'student_on_course' course 'students'    %}">{{ data.students|length }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows for other data -->
+            </tbody>
+        </table>
+        <br>
+    </div>
+</div>
+<div class="level-container">
+    <h2 class="level-title"> Elective</h2>
+    <div class="report-table-container">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>major</th>
+                    <th>graduate Students</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- إضافة حقول نموذجك هنا -->
+
+                    {% for course, data in elective_map.items %}
+                    <tr>
+                        <td>{{ course }}</td>
+                        <td>{{ course.name }}</td>
+                        <td>
+                            {% for pre_course in course.majors.all %}
+                            {{ pre_course.name }}
+                            {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td><a href="{% url 'student_on_course' course 'elective' %}">{{ data|length }}</a></td>
+                        <td> <input type="checkbox" id="checkbox_{{ course.id }}" name="course_checkbox"
+                                value="{{ course.id }}" {% if course.instructor %}checked{% endif %}>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- زر Submit -->
+                    
+                    <button type="button" id="submit_button">Submit</button>
+                    <pre>
+                    </pre>
+                </form>
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                <script>
+                $(document).ready(function() {
+                    // عند النقر على الزر (يمكنك استبداله بالحدث الذي تريده)
+                    $("#submit_button").click(function() {
+                        // جمع المعلومات عن الcheckboxes المحددة
+                        var selectedCourses = [];
+                        
+                        $("input[name='course_checkbox']:checked").each(function() {
+                            var isChecked = $(this).prop('checked');
+                            selectedCourses.push($(this).val()
+                            
+                            );
+                        });
+                        console.log(selectedCourses)
+                        // إرسال المعلومات إلى الخادم (يمكنك استخدام Ajax)
+                        $.ajax({
+                            type: "POST",
+                            url: "{% url 'update_instructor' %}",  // استبدل 'your_update_view' باسم رأيتك التي تقوم بتحديث المعلومات
+                            data: {
+                                'selected_courses': selectedCourses,
+                                'csrfmiddlewaretoken': '{{ csrf_token }}'
+                            },
+                            success: function(response) {
+                                window.location.reload()    
+                            }
+                        });
+                    });
+                    
+                });
+                </script>
+
+
+            </tbody>
+        </table>
+        <br>
+
+        <h2 class="level-title">Faculty optional</h2>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Total Students</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for course, data in college_map.items %}
+                <tr>
+                    <td>{{course}}</td>
+                    <td>{{course.name}}</td>
+                    <td> <a href="">{{data|length}}</a></td>
+
+                </tr>
+                {%endfor%}
+                <!-- Add more rows for other data -->
+            </tbody>
+        </table>
+        <br>
+        <h2 class="level-title">Univerity Optional</h2>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Total Students</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course, data in university_map.items %}
+                <tr>
+                    <td>{{course}}</td>
+                    <td>{{course.name}}</td>
+                    <td> <a href="">{{data|length}}</a></td>
+
+                </tr>
+                {%endfor%}
+                <!-- Add more rows for other data -->
+            </tbody>
+        </table>
+        <br>
+
+    </div>
+</div>
+
+{% endblock content%}

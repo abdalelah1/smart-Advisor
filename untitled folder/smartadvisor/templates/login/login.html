@@ -1,0 +1,38 @@
+{% extends "index/index.html" %}
+{% load static %}
+{% block pages %}
+<head>
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <style>
+        .error-message {
+            color: #ff0000; /* Red color for the error message */
+            font-size: 14px; /* Adjust font size */
+            margin-top: 5px; /* Add some space at the top */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button id="buttonb" type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock pages %}

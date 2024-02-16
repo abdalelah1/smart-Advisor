@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Map</title>
+</head>
+<body>
+    <h1>Final Map</h1>
+
+    <table border="1">
+        <tr>
+            <th>Course Code</th>
+            <th>Fail Count</th>
+            <th>Conditional Count</th>
+            <th>Graduated Count</th>
+            <th>Same Level Count</th>
+            <th>Total Students Count</th>
+        </tr>
+
+        {% for course, data in final_map.items %}
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ data.fault|length }}</td>
+                <td>{{ data.condition|length }}</td>
+                <td>{{ data.graduate|length }}</td>
+                <td>{{ data.same_level|length }}</td>
+                <td>{{ data.students|length }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'home/home.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+<div class="content">
+    <table>
+        <tr>
+            <th>Section Name</th>
+            <th>College</th>
+            <th>Number of Hours in Section</th>
+            <th>Fewest Hours To be Graduated</th>
+            <th> Required Elective hours</th>
+        </tr>
+        {% for department in departments %}
+        <tr>
+            <td>{{ department.name }}</td>
+            <td>{{ department.college.name }}</td>
+            <td>{{ department.full_courses_count }}</td>
+            <td>{{ department.no_hourse_Tobe_graduated }}</td>
+            <td>{{ department.no_required_Elecvtive }}</td>
+            <td>{{ department.no_required_Elecvtive }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

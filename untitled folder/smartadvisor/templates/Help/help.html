@@ -1,0 +1,29 @@
+{% extends 'home/home.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
+    <title>Upload Excel File</title>
+</head>
+<body>
+    <div class="container">
+        <img src="{% static 'images/screen major.png' %}"  class="main-image">
+        <div class="excel-description">
+            <p class="description-text">Please upload an Excel file containing the following information:</p>
+            <ul class="description-list">
+                <li>Identification Number</li>
+                <li>Course Code</li>
+                <li>Degree</li>
+                <li>Major</li>
+            </ul>
+        </div>
+        <div class="file-input">
+            <input type="file" accept=".xlsx, .xls" id="excelFile" name="excelFile" class="custom-file-input">
+            <label for="excelFile" class="file-label">Upload Excel File</label>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}
